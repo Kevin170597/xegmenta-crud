@@ -2,9 +2,11 @@ const AWS = require("aws-sdk");
 
 const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
 
+const { v4: uuidv4 } = require('uuid');
+
 exports.handler = (event, context, callback) => {
     let item = {
-        id : Number(event.id),
+        id : uuidv4(),
         email : event.email,
         username : event.username,
         lastName : event.lastName

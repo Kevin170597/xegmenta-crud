@@ -2,11 +2,11 @@ const AWS = require("aws-sdk");
 
 const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' });
 
-exports.handler = (event, contexy, callback) => {
+exports.handler = (event, context, callback) => {
     
     let params = {
         TableName: 'users',
-        Key: {"id" : Number(event.id)},
+        Key: {"id" : event.id},
         ConditionExpression: 'attribute_exists(id)'
     };
     
